@@ -100,7 +100,7 @@ include "./Includes/header.php";
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
-        <?php include "./Includes/sidebar.php" ?>
+        <?php include "./Includes/sidebar.php"; ?>
 
     </div>
     <!-- /.row -->
