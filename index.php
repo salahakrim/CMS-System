@@ -49,6 +49,7 @@ include "./Includes/header.php";
 
 
 
+
             <!-- Second Blog Post -->
             <h2>
                 <a href="#">Blog Post Title</a>
