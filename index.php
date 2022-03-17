@@ -45,12 +45,6 @@ include "./Includes/header.php";
                 <hr>
 
 
-
-
-
-
-
-
             <?php } ?>
 
 

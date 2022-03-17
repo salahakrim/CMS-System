@@ -30,6 +30,8 @@ include "./Includes/header.php";
                     echo "<h1>NO RESULTS</h1>";
                 } else {
 
+
+
                     $query = "SELECT * FROM posts";
                     $select_all_posts = mysqli_query($connection, $query);
                     while ($row = mysqli_fetch_assoc($select_all_posts)) {
@@ -70,8 +72,13 @@ include "./Includes/header.php";
 
             <?php }
                 }
-            }
-            ?>
+            } ?>
+
+
+
+
+
+
 
 
 
