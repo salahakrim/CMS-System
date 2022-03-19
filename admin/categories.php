@@ -1,7 +1,6 @@
 <?php
-include "../Includes/DB.php";
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,10 +35,6 @@ include "../Includes/DB.php";
 <body>>
 
     <div id="wrapper">
-
-        <?php
-        if ($connection) echo "akjfakdlafl";
-        ?>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
