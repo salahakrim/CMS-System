@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include "../Includes/DB.php";
 ?>
 
@@ -37,9 +38,7 @@ include "../Includes/DB.php";
 
     <div id="wrapper">
 
-        <?php
-        if ($connection) echo "akjfakdlafl";
-        ?>
+
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

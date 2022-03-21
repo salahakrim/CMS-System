@@ -1,4 +1,5 @@
 <?php
+global $connection;
 $db['db_host'] = "localhost";
 $db['db_user'] = "root";
 $db['db_pass'] = "";
