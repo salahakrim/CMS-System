@@ -143,7 +143,7 @@ ob_start();
                             </form>
 
                             <?php
-
+                            // UPDATE AND INCLUDE QUERY
                             if (isset($_GET['edit'])) {
                                 $cat_id = $_GET['edit'];
                                 include "includes/update_categories.php";
