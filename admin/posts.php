@@ -120,89 +120,85 @@ ob_start();
 
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div v class="col-lg-12">
+                        <h1 class="page-header">
+                            welcome to admin
+                            <small>Author</small>
+                        </h1>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Author</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Image</th>
+                                    <th>Tags</th>
+                                    <th>Comments</th>
+                                    <th>Date</th>
+                                </tr>
 
-                        <div class="col-xs-6">
+                            </thead>
+                            <tbody>
+                                <?php
+                                global $select_posts;
+                                $query = "SELECT * FROM posts";
+                                $select_posts = mysqli_query($connection, $query);
+                                while ($row = mysqli_fetch_assoc($select_posts)) {
+                                    $post_id = $row['post_id'];
+                                    $post_author = $row['post_author'];
+                                    $post_title = $row['post_title'];
+                                    $post_category_id = $row['post_category_id'];
+                                    $post_status = $row['post_status'];
+                                    $post_image = $row['post_image'];
+                                    $post_tags = $row['post_tags'];
+                                    $post_comment_count = $row['post_comment_count'];
+                                    $post_date = $row['post_date'];
+                                    echo $post_date;
 
-                            <?php
-                            insert_categories();
-                            ?>
+                                    echo "<tr>";
+                                    echo "<td>{$post_id}</td>";
+                                    echo "<td>{$post_author}</td>";
+                                    echo "<td>{$post_title}</td>";
+                                    echo "<td>{$post_category_id}</td>";
+                                    echo "<td>{$post_status}</td>";
+                                    echo "<td><img width='150' src='../images/{$post_image}' alt='image'></td>";
+                                    echo "<td>{$post_tags}</td>";
+                                    echo "<td>{$post_comment_count}</td>";
+                                    echo "<td>{$post_date}</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                                <!-- <td>10</td>
+                                <td>salah</td>
+                                <td>bootstrap framework</td>
+                                <td>bootstrap</td>
+                                <td>status</td>
+                                <td>images</td>
+                                <td>tags</td>
+                                <td>comment</td>
+                                <td>dates</td> -->
 
-
-                            <form action="" method="POST">
-                                <div class="form-group">
-                                    <label for="cat-title">Add Category</label>
-                                    <input class="form-control" type="text" name="cat_title">
-                                </div>
-                                <div class="form-group">
-                                    <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
-                                </div>
-                            </form>
-
-                            <?php
-                            // UPDATE AND INCLUDE QUERY
-                            if (isset($_GET['edit'])) {
-                                $cat_id = $_GET['edit'];
-                                include "includes/update_categories.php";
-                            }
-                            ?>
-
-                        </div>
-
-                        <div class="col-xs-6">
-                            <?php
-                            global $select_categories;
-                            $query = "SELECT * FROM categories";
-                            $select_categories = mysqli_query($connection, $query);
-                            ?>
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Category Title</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // FIND ALL CATEGORIES QUERY
-                                    Find_ALL_categories();
-                                    ?>
-
-                                    <?php
-                                    // DELETE QUERY
-                                    delete_query();
-                                    ?>
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- /.row -->
+
                 </div>
-                <!-- /.row -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /#page-wrapper -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
 </body>
 

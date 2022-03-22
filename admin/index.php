@@ -33,6 +33,44 @@ include "../Includes/DB.php";
     <![endif]-->
 
 </head>
+<style>
+    .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+    }
+
+    body {
+        top: 0px !important;
+    }
+
+    .goog-te-gadget {
+        /*color: transparent !important;*/
+        line-height: 2px !important;
+        color: transparent;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+
+    #google_translate_element {
+        color: transparent;
+    }
+
+    #google_translate_element a {
+        display: none;
+    }
+
+    div.goog-te-gadget {
+        color: transparent !important;
+
+    }
+
+    .goog-te-combo {
+        width: 170px;
+        height: 40px;
+        font-size: 20px;
+    }
+</style>
 
 <body>>
 
@@ -56,6 +94,27 @@ include "../Includes/DB.php";
             <ul class="nav navbar-right top-nav">
                 <li><a href="../index.php">Home Page</a></li>
 
+
+
+
+
+                <!-- Translation Code here -->
+                <li>
+                    <span>
+                        <div class="translate" id="google_translate_element"></div>
+
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'en,ar,fr',
+                                    includedLanguages: "ar,en,fr"
+                                }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </span>
+                </li>
+                <!-- Translation Code End here -->
 
 
 
@@ -92,7 +151,7 @@ include "../Includes/DB.php";
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                     <li class="active">
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
