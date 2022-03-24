@@ -132,8 +132,8 @@ ob_start();
                             $source = '';
                         }
                         switch ($source) {
-                            case '32';
-                                echo "nice 32";
+                            case 'add_post';
+                                include "includes/add_post.php";
                                 break;
                             case '100';
                                 echo "nice 100";
