@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .ct-topbar {
+  text-align: right;
+  background: #eee;
+}
+.ct-topbarlist {
+  margin-bottom: 0px;
+}
+.ct-languagedropdown{
+    padding-top: 8px;
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 110%;
+    left: -3px;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    width: 100px;
+    text-align: center;
+    padding-top: 0;
+  z-index:200;
+}
+.ct-languagedropdown li{
+    background: #222;
+    padding: 5px;
+}
+.ct-languagedropdown li a{
+    display: block;
+}
+.ct-languagedropdown li:first-child{
+    padding-top: 10px;
+    border-radius: 3px 3px 0 0;
+}
+.ct-languagedropdown li:last-child{
+    padding-bottom: 10px;
+    border-radius: 0 0 3px 3px;
+}
+.ct-languagedropdown li:hover{
+    background: #444;
+}
+.ct-languagedropdown:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 8px;
+    height: 0;
+    border: 0 solid transparent;
+    border-right-width: 8px;
+    border-left-width: 8px;
+    border-bottom: 8px solid #222;
+}
+.ct-language{
+    position: relative;
+  background: #00aced;
+  color: #fff;
+  padding: 10px 0;
+}
+.ct-language:hover .ct-language__dropdown{
+    max-height: 200px;
+    padding-top: 8px;
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+</style>
+<body>
+    
+   
+   
+   
+   <span>
+    <script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+
+
+    <li><a href="#googtrans(en|en)" class="lang-en lang-select" data-lang="en"><img src="https://img.icons8.com/doodle/48/000000/usa.png" alt="USA"></a></li>
+    <li><a href="#googtrans(en|fr)" class="lang-es lang-select" data-lang="fr"><img src="/French.png" alt="FRANCE"></a></li>
+   <li><a href="#googtrans(en|de)" class="lang-es lang-select" data-lang="de"><img src="German.png" alt="Germany"></a></li>
+   
+   <li><a href="#googtrans(en|it)" class="lang-es lang-select" data-lang="it"><img src="Italian.png" alt="Italy"></a></li>
+   <li><a href="#googtrans(en|ja)" class="lang-es lang-select" data-lang="ja"><img src="Japanese.png" alt="JAPAN"></a></li>
+   <div class="container">
+       <h1>Use Google Translate with your Website</h1>
+   </div>
+    <div class="translate" id="google_translate_element"></div>
+
+    <script type="text/javascript" class="lang-en lang-select">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en,ar,fr',
+                includedLanguages: "ar,en,fr"
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+   
+   
+</body>
+</html>
