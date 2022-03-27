@@ -1,4 +1,6 @@
 <?php
+$connection = mysqli_connect("localhost", "root", "", "cms");
+global $connection;
 if (isset($_POST['create_post'])) {
     $post_title = $_POST['title'];
     $post_author = $_POST['author'];
@@ -14,8 +16,8 @@ if (isset($_POST['create_post'])) {
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
 
-    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
-    $query .= "VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}')";
+    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES('{$post_category_id}','{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}'";
+
 
     $create_post_query = mysqli_query($connection, $query);
 

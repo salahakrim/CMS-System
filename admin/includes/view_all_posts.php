@@ -1,3 +1,6 @@
+<?php
+
+?>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -15,6 +18,8 @@
     </thead>
     <tbody>
         <?php
+        $connection = mysqli_connect("localhost", "root", "", "cms");
+        global $connection;
         global $select_posts;
         $query = "SELECT * FROM posts";
         $select_posts = mysqli_query($connection, $query);
@@ -40,18 +45,24 @@
             echo "<td>{$post_tags}</td>";
             echo "<td>{$post_comment_count}</td>";
             echo "<td>{$post_date}</td>";
+            echo "<td><a href='../posts.php?delete={$post_id}'>Delete</a></td>";
             echo "</tr>";
         }
         ?>
         <!-- <td>10</td>
-                                <td>salah</td>
-                                <td>bootstrap framework</td>
-                                <td>bootstrap</td>
-                                <td>status</td>
-                                <td>images</td>
-                                <td>tags</td>
-                                <td>comment</td>
-                                <td>dates</td> -->
+        <td>salah</td>
+        <td>bootstrap framework</td>
+        <td>bootstrap</td>
+        <td>status</td>
+        <td>images</td>
+        <td>tags</td>
+        <td>comment</td>
+        <td>dates</td> -->
 
     </tbody>
 </table>
+<?php
+if (isset($_GET['delete'])) {
+    echo "hello";
+}
+?>
