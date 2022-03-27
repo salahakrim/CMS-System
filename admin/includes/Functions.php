@@ -74,7 +74,3 @@ function Edite_query()
         }
     }
 }
-function ajouter_confug()
-{
-    echo "jjjjj";
-}
