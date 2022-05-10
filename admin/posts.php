@@ -145,6 +145,9 @@ ob_start();
                                 include "includes/view_all_posts.php";
                                 break;
                         }
+                        
+                        
+
                         ?>
                     </div>
                     <!-- /.row -->
