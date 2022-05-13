@@ -1,209 +1,83 @@
-<?php
-include "../Includes/DB.php";
-include "includes/Functions.php";
-ob_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
+<?php include('header.php') ?>
+<div id="page-wrapper">
 
-<head>
+    <div class="container-fluid">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+                <div class="col-xs-6">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">CMS Admin</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
-                <li><a href="../index.php">Home Page</a></li>
+                    <?php
+                    insert_categories();
+                    ?>
 
 
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="cat-title">Add Category</label>
+                            <input class="form-control" type="text" name="cat_title">
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
+                        </div>
+                    </form>
 
+                    <?php
+                    // UPDATE AND INCLUDE QUERY
+                    if (isset($_GET['edit'])) {
+                        $cat_id = $_GET['edit'];
+                        include "update_categories.php";
+                    }
+                    ?>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
+                </div>
 
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+                <div class="col-xs-6">
+                    <?php
+                    global $select_categories;
+                    $query = "SELECT * FROM categories";
+                    $select_categories = mysqli_query($connection, $query);
+                    ?>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Category Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // FIND ALL CATEGORIES QUERY
+                            Find_ALL_categories();
+                            ?>
 
+                            <?php
+                            // DELETE QUERY
+                            delete_query();
+                            ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <ol class="breadcrumb">
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="posts_dropdown" class="collapse">
-                            <li>
-                                <a href="#">View All Posts</a>
-                            </li>
-                            <li>
-                                <a href="#">Add Posts</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
                     </li>
                     <li class="active">
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
+                        <i class="fa fa-file"></i> Blank Page
                     </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Dropdown Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
-                    </li>
-                </ul>
+                </ol>
             </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <div class="col-xs-6">
-
-                            <?php
-                            insert_categories();
-                            ?>
-
-
-                            <form action="" method="POST">
-                                <div class="form-group">
-                                    <label for="cat-title">Add Category</label>
-                                    <input class="form-control" type="text" name="cat_title">
-                                </div>
-                                <div class="form-group">
-                                    <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
-                                </div>
-                            </form>
-
-                            <?php
-                            // UPDATE AND INCLUDE QUERY
-                            if (isset($_GET['edit'])) {
-                                $cat_id = $_GET['edit'];
-                                include "includes/update_categories.php";
-                            }
-                            ?>
-
-                        </div>
-
-                        <div class="col-xs-6">
-                            <?php
-                            global $select_categories;
-                            $query = "SELECT * FROM categories";
-                            $select_categories = mysqli_query($connection, $query);
-                            ?>
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Category Title</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // FIND ALL CATEGORIES QUERY
-                                    Find_ALL_categories();
-                                    ?>
-
-                                    <?php
-                                    // DELETE QUERY
-                                    delete_query();
-                                    ?>
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-file"></i> Blank Page
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-            </div>
-            <!-- /.container-fluid -->
-
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.row -->
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /.container-fluid -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+</div>
+<!-- /#page-wrapper -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+<?php include 'footer.php'; ?>
