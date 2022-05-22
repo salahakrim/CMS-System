@@ -19,10 +19,10 @@
                 }
                 switch ($source) {
                     case 'add_post';
-                        include "add_post.php";
+                        include "./add_post.php";
                         break;
-                    case '100';
-                        echo "nice 100";
+                    case 'edit_post';
+                        include "./edit_post.php";
                         break;
                     case '55';
                         echo "nice 55";
