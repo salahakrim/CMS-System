@@ -3,6 +3,17 @@ ob_start();
 include "../Includes/DB.php";
 ?>
 <?php
+function confirmquery($result)
+{
+    global $connection;
+    if (!$result) {
+        die("QUERY FAILED ." . mysqli_error($connection));
+    }
+}
+
+
+
+
 function insert_categories()
 {
     global $connection;

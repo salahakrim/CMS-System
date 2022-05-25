@@ -29,8 +29,23 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
         <input value="<?php echo $post_title; ?>" type="text" class="form-control" name="title">
     </div>
     <div class="form-group">
-        <label for="post_category">Post Category ID</label>
-        <input value="<?php echo $post_category_id; ?>" type="text" class="form-control" name="post_category_id">
+
+        <select name="" id="">
+            <?php
+            $query = "SELECT * FROM categories";
+            $select_categories = mysqli_query($connection, $query);
+            confirmquery($select_categories);
+
+            while ($row = mysqli_fetch_assoc($select_categories)) {
+                $cat_id = $row['cat_id'];
+                $cat_title = $row['cat_title'];
+
+                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+            }
+            ?>
+        </select>
+
+
     </div>
     <div class="form-group">
         <label for="title">Post Author</label>
