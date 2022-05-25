@@ -5,7 +5,7 @@ if (isset($_GET['p_id'])) {
 }
 
 
-$query = "SELECT * FROM posts";
+$query = "SELECT * FROM posts WHERE post_id = '$the_post_id'";
 $select_posts_by_id = mysqli_query($connection, $query);
 while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
     $post_id = $row['post_id'];
@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 ?>
 
 
-<form action="" mmethod="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="title">Post Title</label>
         <input value="<?php echo $post_title; ?>" type="text" class="form-control" name="title">
@@ -41,8 +41,7 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
         <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status">
     </div>
     <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
+        <img width="100" src="../Images/<?php echo $post_image; ?>" alt="">
     </div>
     <div class="form-group">
         <label for="post_tags">Post Tags</label>

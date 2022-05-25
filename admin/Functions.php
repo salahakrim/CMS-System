@@ -58,6 +58,7 @@ function Update_query()
 }
 function Edite_query()
 {
+
     global $connection;
     if (isset($_GET['edit'])) {
         $cat_id = $_GET['edit'];
