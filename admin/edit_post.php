@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 if (isset($_GET['p_id'])) {
     $the_post_id = $_GET['p_id'];
 }
@@ -33,8 +33,24 @@ if (isset($_POST['update_post'])) {
 
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
-    $query = "UPDATE post SET post_title = '{$post_title}', post_category_id = '{$post_category_id}', post_date = now(), post_author = '{$post_author}', post_status = '{$post_status}', post_tags = '{$post_tags}', post_content = '{$post_content}', post_image = '{$post_image}', WHERE post_id = $the_post_id ";
+    if (empty($post_image)) {
+        $query = "SELECT * FROM Posts WHERE post_id = $the_post_id ";
+        $select_image = mysqli_query($connection, $query);
+        while ($row = mysqli_fetch_array($select_image)) {
+            $post_image = $row['post_image'];
+        }
+    }
 
+
+
+    $query = "UPDATE posts SET post_title = '{$post_title}',
+            post_category_id = '{$post_category_id}', 
+            post_date = now(), 
+            post_author = '{$post_author}', 
+            post_status = '{$post_status}', 
+            post_tags = '{$post_tags}', 
+            post_content = '{$post_content}', 
+            post_image = '{$post_image}' WHERE post_id = $the_post_id";
     $update_post = mysqli_query($connection, $query);
     confirmquery($update_post);
 }
