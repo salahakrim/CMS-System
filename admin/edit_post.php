@@ -41,17 +41,10 @@ if (isset($_POST['update_post'])) {
         }
     }
 
-
-
-    $query = "UPDATE posts SET post_title = '{$post_title}',
-            post_category_id = '{$post_category_id}', 
-            post_date = now(), 
-            post_author = '{$post_author}', 
-            post_status = '{$post_status}', 
-            post_tags = '{$post_tags}', 
-            post_content = '{$post_content}', 
-            post_image = '{$post_image}' WHERE post_id = $the_post_id";
+    $query = "UPDATE posts SET post_title = '{$post_title}', post_category_id =  {$post_category_id}, post_date = now(), post_author = '{$post_author}', 
+            post_status = '{$post_status}', post_tags = '{$post_tags}', post_content = '{$post_content}', post_image = '{$post_image}' WHERE post_id = {$the_post_id} ";
     $update_post = mysqli_query($connection, $query);
+
     confirmquery($update_post);
 }
 
